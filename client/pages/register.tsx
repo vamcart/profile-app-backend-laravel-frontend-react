@@ -6,12 +6,20 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export default function RegisterPage() {
   const router = useRouter();
-  const [form, setForm] = useState({ email: '', password: '', gender: '' });
-  const [errors, setErrors] = useState<any>({});
+  interface FormValues {
+    email: string;
+    password: string;
+    gender: string;
+  }
+
+  type ErrorMap = Record<string, string>;
+
+  const [form, setForm] = useState<FormValues>({ email: '', password: '', gender: '' });
+  const [errors, setErrors] = useState<ErrorMap>({});
   const [showPassword, setShowPassword] = useState(false);
 
   const validate = () => {
-    const errs: any = {};
+    const errs: ErrorMap = {};
     if (!form.email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) errs.email = 'Invalid email';
     if (form.password.length < 8) errs.password = 'Password must be at least 8 characters';
     if (!['male','female','other'].includes(form.gender)) errs.gender = 'Select gender';
