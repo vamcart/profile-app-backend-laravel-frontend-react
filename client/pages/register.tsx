@@ -40,7 +40,7 @@ export default function RegisterPage() {
 
       const response = loginResponse;
 
-      console.log("token: " + response.data.token);
+      console.log("User Token: " + response.data.token);
 
       if (typeof window !== 'undefined') {
         localStorage.setItem('authToken', response.data.token);
@@ -53,10 +53,10 @@ export default function RegisterPage() {
           }
       })
       .then(response => {
-          console.log(response.data);
+          console.log('Profile response:', response.data);
       })
       .catch(error => {
-          console.error(error.response.data);
+          console.error('Profile request error:', error.response.data);
       });
 
       router.push('/profile');
