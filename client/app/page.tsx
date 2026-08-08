@@ -1,10 +1,12 @@
 'use client';
 
+import Link from 'next/link'
+
 export default function Home() {
   return (
     <div>
 	<ul>
-	    <li><a href="/register">Вход/Регистрация</a></li>
+	    <li><Link href="/register">Вход/Регистрация</Link></li>
 	</ul>
     </div>
   );
